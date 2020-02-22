@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AuthService, SocialUser } from 'angularx-social-login';
 import { environment } from '../environments/environment'
+//import { environment } from 'src/environments/environment.prod';
 
 
 export interface UserDetails {
@@ -29,7 +30,7 @@ export interface TokenPayload {
 export class AuthenticationService {
   private token: string;
   googleAPIuserData: SocialUser;
-  baseUrl = (environment as any).baseUrl;
+  baseUrl = 'https://guarded-stream-27071.herokuapp.com/api';
 
   constructor(private http: HttpClient, private googleAuth: AuthService, private router: Router) { }
 
