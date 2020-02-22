@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment'
   providedIn: 'root'
 })
 export class ExpenseService {
-  baseUrl = environment.baseUrl;
+  baseUrl = (environment as any).baseUrl;
   constructor(private http: HttpClient) { }
   /**
    * To add an expense to database

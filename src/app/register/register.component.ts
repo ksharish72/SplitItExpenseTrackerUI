@@ -17,6 +17,7 @@ export class RegisterComponent {
 
   constructor(private auth: AuthenticationService, private router: Router) { }
   userNameExists: boolean = false;
+  isGmailAddress: string;
   register() {
     console.log(this.credentials)
     if (this.credentials.email != "" && this.credentials.name != "" && this.credentials.password != "") {

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AuthService, SocialUser } from 'angularx-social-login';
-import {environment} from '../environments/environment'
+import { environment } from '../environments/environment'
 
 
 export interface UserDetails {
@@ -29,7 +29,7 @@ export interface TokenPayload {
 export class AuthenticationService {
   private token: string;
   googleAPIuserData: SocialUser;
-  baseUrl=environment.baseUrl;
+  baseUrl = (environment as any).baseUrl;
 
   constructor(private http: HttpClient, private googleAuth: AuthService, private router: Router) { }
 
@@ -70,9 +70,9 @@ export class AuthenticationService {
     let base;
 
     if (method === 'post') {
-      base = this.http.post(this.baseUrl+`/${type}`, user);
+      base = this.http.post(this.baseUrl + `/${type}`, user);
     } else {
-      base = this.http.get(this.baseUrl+`/${type}`, { headers: { Authorization: `Bearer ${this.getToken()}` } });
+      base = this.http.get(this.baseUrl + `/${type}`, { headers: { Authorization: `Bearer ${this.getToken()}` } });
     }
 
     const request = base.pipe(
@@ -104,7 +104,7 @@ export class AuthenticationService {
     console.log(this.googleAPIuserData)
     this.token = '';
     window.localStorage.removeItem('mean-token');
-   // this.googleAPIuserData.photoUrl = null;
+    // this.googleAPIuserData.photoUrl = null;
     const promise = this.googleAuth.signOut();
     promise.then(res => {
       this.router.navigateByUrl('/');
