@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  baseUrl: 'https://guarded-stream-27071.herokuapp.com/api'
 };
